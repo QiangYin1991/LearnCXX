@@ -10,7 +10,7 @@ extern double warming;
 using std::cout;
 void update(double dt)
 {
-    extern double warming;
+    //extern double warming;
     warming += dt;
     cout << "Updating global warming to " << warming;
     cout << " degress.\n";
