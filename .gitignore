@@ -3,3 +3,9 @@ exe
 **/Build/
 **/bin/
 **/lib/
+*.suo
+*.ipch
+**/Debug/
+*.opendb
+*.obj
+*.db
