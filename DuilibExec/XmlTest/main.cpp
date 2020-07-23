@@ -14,16 +14,15 @@ public:
 		LRESULT lRes = 0;
 
 		if (uMsg == WM_CREATE) {
-			CControlUI *pWnd = new CButtonUI;
-			pWnd->SetName(_T("btnHello"));
-			pWnd->SetText(_T("Hello World"));
-			pWnd->SetBkColor(0xff00ff00);
-
 			m_PaintManager.Init(m_hWnd);
-			m_PaintManager.AttachDialog(pWnd);
+
+			CDialogBuilder builder;
+			CControlUI* pRoot = builder.Create(_T("xmltest.xml"), 0, NULL, &m_PaintManager);
+
+			m_PaintManager.AttachDialog(pRoot);
 			m_PaintManager.AddNotifier(this);
 			return lRes;
-		} 
+		}
 		else if (uMsg == WM_NCACTIVATE) {
 			if (!::IsIconic(m_hWnd))
 			{
@@ -50,9 +49,11 @@ protected:
 
 int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow) {
 	CPaintManagerUI::SetInstance(hInstance);
+	CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
 
 	CDuiFrameWnd duiFrame;
 	duiFrame.Create(NULL, _T("DUIWnd"), UI_WNDSTYLE_FRAME, WS_EX_WINDOWEDGE);
+	duiFrame.CenterWindow();
 	duiFrame.ShowModal();
 	return 0;
 }
