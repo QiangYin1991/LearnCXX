@@ -1,6 +1,23 @@
-<?xml? version="1.0" encoding="UTF-8"?>
-<Window size="800,600">
-    <HorizontalLayout bkcolor="#ff00ff00">
-        <Button name="btnHello" text="Hello World"></Button>
-    </HorizontalLayout>
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="800,600" mininfo="600,400" caption="0,0,0,32" sizebox="4,4,4,4">
+    <VerticalLayout bkcolor="#fff0f0f0" bkcolor2="#ffaaaaa0">
+        <!--标题栏区-->
+        <HorizontalLayout height="32" bkcolor="#ffe6e6dc" bkcolor2="#ffaaaaa0">
+            <VerticalLayout></VerticalLayout>
+            <VerticalLayout width="77">
+                <Button name="minbtn" tooltip="最小化" float="true" pos="0,5,20,22" 
+                normalimage=" file='skin\xmltest\mini_normal.png'" hotimage=" file='skin\xmltest\mini_hover.png'" pushimage=" file='skin\xmltest\mini_hover.png'"></Button>
+                <Button name="maxbtn" tooltip="最大化" float="true" pos="22,5,42,22" 
+                normalimage=" file='skin\xmltest\max_normal.png'" hotimage=" file='skin\xmltest\max_hover.png'" pushimage=" file='skin\xmltest\max_hover.png'"></Button>
+                <Button name="restorebtn" visible="false" tooltip="还原" float="true" pos="22,5,42,22" 
+                normalimage=" file='skin\xmltest\restore_normal.png'" hotimage=" file='skin\xmltest\restore_hover.png'" pushimage=" file='skin\xmltest\restore_hover.png'"></Button>
+                <Button name="closebtn" tooltip="关闭" float="true" pos="46,5,64,22" 
+                normalimage=" file='skin\xmltest\close_normal.png'" hotimage=" file='skin\xmltest\close_hover.png'" pushimage=" file='skin\xmltest\close_hover.png'"></Button>
+            </VerticalLayout>
+        </HorizontalLayout>
+        <!-- 客户区-->
+        <HorizontalLayout>
+            <Button name="btnHello" text="Hello Woooooooorld"></Button>
+        </HorizontalLayout>
+    </VerticalLayout>
 </Window>
