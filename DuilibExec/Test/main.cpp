@@ -4,25 +4,28 @@ class CDuiFrameWnd : public CWindowWnd, public INotifyUI
 {
 public:
 	virtual LPCTSTR GetWindowClassName() const { return _T("DUIMainFrame"); }
-	virtual void Notify(TNotifyUI& msg) {}
+	virtual void Notify(TNotifyUI& msg) {
+		if (msg.sType == _T("click") && msg.pSender->GetName() == _T("btnHello")) {
+			::MessageBox(NULL, _T("我是按钮"), _T("点击了按钮"), NULL);
+		}
+	}
 
-	virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
-	{
+	virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
 		LRESULT lRes = 0;
 
-		if (uMsg == WM_CREATE)
-		{
+		if (uMsg == WM_CREATE) {
 			CControlUI *pWnd = new CButtonUI;
+			pWnd->SetName(_T("btnHello"));
 			pWnd->SetText(_T("Hello World"));
 			pWnd->SetBkColor(0xff00ff00);
 
 			m_PaintManager.Init(m_hWnd);
 			m_PaintManager.AttachDialog(pWnd);
+			m_PaintManager.AddNotifier(this);
 			return lRes;
 		}
 
-		if (m_PaintManager.MessageHandler(uMsg, wParam, lParam, lRes))
-		{
+		if (m_PaintManager.MessageHandler(uMsg, wParam, lParam, lRes)) {
 			return lRes;
 		}
 
@@ -33,8 +36,7 @@ protected:
 	CPaintManagerUI m_PaintManager;
 };
 
-int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
-{
+int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow) {
 	CPaintManagerUI::SetInstance(hInstance);
 
 	CDuiFrameWnd duiFrame;
