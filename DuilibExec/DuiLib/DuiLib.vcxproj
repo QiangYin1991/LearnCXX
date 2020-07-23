@@ -79,8 +79,8 @@
     <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\Build\Debug\</OutDir>
-    <IntDir>.\Build\Debug\</IntDir>
+    <OutDir>..\bin\$(Platform)\$(Configuration)</OutDir>
+    <IntDir>..\obj\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <EmbedManifest>false</EmbedManifest>
@@ -163,7 +163,7 @@
       <Culture>0x0409</Culture>
     </ResourceCompile>
     <Link>
-      <OutputFile>../bin/DuiLib_d.dll</OutputFile>
+      <OutputFile>..\bin\$(Platform)\$(Configuration)\DuiLib_d.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>.\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
