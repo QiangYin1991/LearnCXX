@@ -13,5 +13,11 @@ public:
     void update(double price);
     void show();
 private:
+    void set_tot() { total_val = shares * share_val; }
+private:
+    std::string company;
+    long shares;
+    double share_val;
+    double total_val;
 };
 #endif
